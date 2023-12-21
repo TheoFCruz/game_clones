@@ -8,7 +8,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800,600), "Pong");
 
-	Player player;
+	Player player(window);
 
 	while (window.isOpen()) 
 	{
@@ -19,15 +19,16 @@ int main()
 			if (event.type == sf::Event::Closed) window.close();
 		}
 
+		// Handle logic
+		player.update();
+
 		// Handle drawing
 		window.clear(sf::Color::Black);
 
-		window.draw(player.get_shape());
+		player.draw();
 
 		window.display();
 
-		// Handle logic
-		player.update();
 	}
 	return 0;
 }
