@@ -5,12 +5,12 @@
 class Player{
 private:
 	sf::RectangleShape _player_shape;
-	float _v_speed = 0;
+	float _speed = 0.5f;
 
 public:
 	Player();
 
-	void draw();
+	void draw(sf::RenderWindow& window);
 	void update();
 };
 	
