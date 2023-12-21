@@ -10,7 +10,7 @@ private:
 public:
 	Player();
 
-	void draw(sf::RenderWindow& window);
+	sf::RectangleShape get_shape();
 	void update();
 };
 	

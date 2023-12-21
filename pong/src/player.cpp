@@ -4,13 +4,13 @@
 Player::Player()
 {
 	_player_shape.setFillColor(sf::Color::White);
-	_player_shape.setSize(sf::Vector2f(5.f, 20.f));
+	_player_shape.setSize(sf::Vector2f(5.f, 40.f));
 	_player_shape.setPosition(sf::Vector2f(50.f, 300.f));
 }
 
-void Player::draw(sf::RenderWindow& window)
+sf::RectangleShape Player::get_shape()
 {
-	window.draw(_player_shape);
+	return _player_shape;
 }
 
 void Player::update()

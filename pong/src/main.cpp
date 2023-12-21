@@ -2,9 +2,13 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "../include/player.hpp"
+
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800,600), "Pong");
+
+	Player player;
 
 	while (window.isOpen()) 
 	{
@@ -18,9 +22,12 @@ int main()
 		// Handle drawing
 		window.clear(sf::Color::Black);
 
+		window.draw(player.get_shape());
+
 		window.display();
 
 		// Handle logic
+		player.update();
 	}
 	return 0;
 }
