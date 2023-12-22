@@ -12,6 +12,8 @@ private:
 
 	float _speed = BASE_SPEED;
 
+	void check_collisions();
+
 public:
 	Player(sf::RenderWindow& window);
 

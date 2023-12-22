@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../include/player.hpp"
+#include "../include/ball.hpp"
 
 // Constants
 const int FRAMERATE = 60;
@@ -17,6 +18,7 @@ int main()
 
 	// Create entities
 	Player player(window);
+	Ball ball(5.f, window);
 
 	// Main Loop
 	while (window.isOpen()) 
@@ -30,11 +32,13 @@ int main()
 
 		// Handle logic
 		player.update();
+		ball.update();
 
 		// Handle drawing
 		window.clear(sf::Color::Black);
 
 		player.draw();
+		ball.draw();
 
 		window.display();
 

@@ -1,5 +1,23 @@
 #include "../include/player.hpp"
 
+//-------------------Private Functions-----------------------
+
+void Player::check_collisions()
+{
+	float max_y = _window.getSize().y - _player_shape.getSize().y;
+
+	if (_player_shape.getPosition().y < 0)
+	{
+		_player_shape.setPosition(_player_shape.getPosition().x, 0);
+	}
+	else if (_player_shape.getPosition().y > max_y)
+	{
+		_player_shape.setPosition(_player_shape.getPosition().x, max_y);
+	}
+}
+
+//-------------------Public Functions------------------------
+
 Player::Player(sf::RenderWindow& window):
 	_window(window)
 {
@@ -19,20 +37,10 @@ void Player::update()
 	int up = sf::Keyboard::isKeyPressed(sf::Keyboard::W) ? 1 : 0;
 	int down = sf::Keyboard::isKeyPressed(sf::Keyboard::S) ? 1 : 0;
 
-
 	// Move
 	_player_shape.move(0, (down - up) * _speed);
 
 	// Check collisions
-	float max_y = _window.getSize().y - _player_shape.getSize().y;
-
-	if (_player_shape.getPosition().y < 0)
-	{
-		_player_shape.setPosition(_player_shape.getPosition().x, 0);
-	}
-	else if (_player_shape.getPosition().y > max_y)
-	{
-		_player_shape.setPosition(_player_shape.getPosition().x, max_y);
-	}
+	check_collisions();
 }
 
