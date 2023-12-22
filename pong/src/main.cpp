@@ -4,12 +4,21 @@
 
 #include "../include/player.hpp"
 
+// Constants
+const int FRAMERATE = 60;
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800,600), "Pong");
+	// Create windows
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pong");
+	window.setFramerateLimit(FRAMERATE);
 
+	// Create entities
 	Player player(window);
 
+	// Main Loop
 	while (window.isOpen()) 
 	{
 		// Handle events

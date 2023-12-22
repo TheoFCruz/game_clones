@@ -19,12 +19,13 @@ void Player::update()
 	int up = sf::Keyboard::isKeyPressed(sf::Keyboard::W) ? 1 : 0;
 	int down = sf::Keyboard::isKeyPressed(sf::Keyboard::S) ? 1 : 0;
 
-	float max_y = _window.getSize().y - _player_shape.getSize().y;
 
 	// Move
 	_player_shape.move(0, (down - up) * _speed);
 
 	// Check collisions
+	float max_y = _window.getSize().y - _player_shape.getSize().y;
+
 	if (_player_shape.getPosition().y < 0)
 	{
 		_player_shape.setPosition(_player_shape.getPosition().x, 0);
