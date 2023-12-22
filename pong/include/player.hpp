@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 // Constants
-const float BASE_SPEED = 5.f;
+const float BASE_SPEED = 10.f;
 
 class Player{
 private:
