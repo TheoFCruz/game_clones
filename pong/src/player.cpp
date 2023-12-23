@@ -2,7 +2,7 @@
 
 //-------------------Private Functions-----------------------
 
-void Player::check_collisions()
+void Player::check_window_collisions()
 {
 	float max_y = _window.getSize().y - _player_shape.getSize().y;
 
@@ -41,6 +41,6 @@ void Player::update()
 	_player_shape.move(0, (down - up) * _speed);
 
 	// Check collisions
-	check_collisions();
+	check_window_collisions();
 }
 

@@ -12,11 +12,16 @@ private:
 
 	float _speed = BASE_SPEED;
 
-	void check_collisions();
+	void check_window_collisions();
 
 public:
+	// Constructor
 	Player(sf::RenderWindow& window);
 
+	// Getters
+	sf::RectangleShape get_shape() {return _player_shape;}	
+
+	// Draw and update
 	void draw();
 	void update();
 };

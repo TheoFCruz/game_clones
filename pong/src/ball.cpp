@@ -2,7 +2,7 @@
 
 //-------------------Private Functions--------------------------
 
-void Ball::check_collisions()
+void Ball::check_window_collisions()
 {
 	float max_y = _window.getSize().y - 2 * _ball_shape.getRadius();
 
@@ -35,5 +35,5 @@ void Ball::update()
 {
 	_ball_shape.move(sf::Vector2f(_h_speed, _v_speed));
 
-	check_collisions();
+	check_window_collisions();
 }
