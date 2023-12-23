@@ -6,7 +6,6 @@
 #include "../include/ball.hpp"
 
 // Constants
-const int FRAMERATE = 60;
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 
@@ -28,15 +27,20 @@ int main()
 {
 	// Create windows
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pong");
-	window.setFramerateLimit(FRAMERATE);
+	window.setVerticalSyncEnabled(true);
+
+	// Delta time clock
+	sf::Clock delta_clock;
 
 	// Create entities
 	Player player(window);
-	Ball ball(5.f, window);
+	Ball ball(10.f, window);
 
 	// Main Loop
 	while (window.isOpen()) 
 	{
+		sf::Time delta_time = delta_clock.restart();
+
 		// Handle events
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -45,8 +49,8 @@ int main()
 		}
 
 		// Handle logic
-		player.update();
-		ball.update();
+		player.update(delta_time);
+		ball.update(delta_time);
 
 		check_ball_collision(ball, player);
 

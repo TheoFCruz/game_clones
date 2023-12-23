@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-const float V_SPEED = 5.f;
-const float H_SPEED = -5.f;
+const float V_SPEED = 0.4f;
+const float H_SPEED = -0.4f;
 
 class Ball{
 private:
@@ -24,7 +24,7 @@ public:
 
 	// Draw and update
 	void draw();
-	void update();
+	void update(sf::Time delta_time);
 
 	// Own functions
 	void paddle_bounce() {_h_speed *= -1;}

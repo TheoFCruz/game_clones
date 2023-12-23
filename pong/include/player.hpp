@@ -3,7 +3,9 @@
 #include <SFML/Graphics.hpp>
 
 // Constants
-const float BASE_SPEED = 10.f;
+const float BASE_SPEED = 0.5f;
+const float PLAYER_WIDTH = 10.f;
+const float PLAYER_HEIGHT = 60.f;
 
 class Player{
 private:
@@ -23,6 +25,6 @@ public:
 
 	// Draw and update
 	void draw();
-	void update();
+	void update(sf::Time delta_time);
 };
 	

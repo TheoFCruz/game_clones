@@ -31,9 +31,10 @@ void Ball::draw()
 	_window.draw(_ball_shape);
 }
 
-void Ball::update()
+void Ball::update(sf::Time delta_time)
 {
-	_ball_shape.move(sf::Vector2f(_h_speed, _v_speed));
+	_ball_shape.move(sf::Vector2f(_h_speed * delta_time.asMilliseconds(), 
+															 _v_speed * delta_time.asMilliseconds()));
 
 	check_window_collisions();
 }
