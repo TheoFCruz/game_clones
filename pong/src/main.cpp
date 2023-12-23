@@ -10,6 +10,19 @@ const int FRAMERATE = 60;
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 
+// Other functions
+
+void check_ball_collision(Ball& ball, Player& player)
+{
+	sf::FloatRect ball_bounds = ball.get_shape().getGlobalBounds();
+	sf::FloatRect player_bounds = player.get_shape().getGlobalBounds();
+
+	if (ball_bounds.intersects(player_bounds))
+	{
+		ball.paddle_bounce();
+	}
+}
+
 // Main
 int main()
 {
@@ -34,6 +47,8 @@ int main()
 		// Handle logic
 		player.update();
 		ball.update();
+
+		check_ball_collision(ball, player);
 
 		// Handle drawing
 		window.clear(sf::Color::Black);
