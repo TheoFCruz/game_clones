@@ -28,4 +28,5 @@ public:
 
 	// Own functions
 	void paddle_bounce() {_h_speed *= -1;}
+	void restart();
 };

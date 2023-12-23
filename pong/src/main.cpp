@@ -22,6 +22,12 @@ void check_ball_collision(Ball& ball, Player& player)
 	}
 }
 
+bool check_point(Ball& ball)
+{
+	if (ball.get_shape().getPosition().x < 0) return true;
+	return false;
+}
+
 // Main
 int main()
 {
@@ -53,6 +59,10 @@ int main()
 		ball.update(delta_time);
 
 		check_ball_collision(ball, player);
+		if (check_point(ball))
+		{
+			ball.restart();
+		}
 
 		// Handle drawing
 		window.clear(sf::Color::Black);

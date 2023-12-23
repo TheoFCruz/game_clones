@@ -10,10 +10,15 @@ void Ball::check_window_collisions()
 	{
 		_v_speed *= -1;
 	}
+
+	if (_ball_shape.getPosition().x > _window.getSize().x - _ball_shape.getRadius() * 2)
+	{
+		_h_speed *= -1;
+	}
 }
 
 //-------------------Public Functions---------------------------
-//
+
 Ball::Ball(float radius, sf::RenderWindow& window):
 	_window(window)
 {	
@@ -37,4 +42,13 @@ void Ball::update(sf::Time delta_time)
 															 _v_speed * delta_time.asMilliseconds()));
 
 	check_window_collisions();
+}
+
+void Ball::restart()
+{
+	// Setting position to the center of the window
+	float center_x = ((float)_window.getSize().x / 2) - _ball_shape.getRadius();	
+	float center_y = ((float)_window.getSize().y / 2) - _ball_shape.getRadius();	
+
+	_ball_shape.setPosition(center_x, center_y);
 }
