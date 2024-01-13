@@ -7,7 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(pong_v2)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/game.cpp)
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 find_package(SDL2)
