@@ -11,16 +11,26 @@ const int SCREEN_HEIGHT = 480;
  */
 class Game
 {
-  public:
-    Game();
-    ~Game();
+public:
+  Game();
+  ~Game();
 
-    /**
-    * @brief Initializes SDL2 and SDL2_ttf and creates a window and a renderer
-    */
-    bool init();
+  /**
+  * @brief Initializes SDL2 and SDL2_ttf and creates a window and a renderer
+  */
+  bool init();
 
-  private:
-    SDL_Window* m_window; 
-    SDL_Renderer* m_renderer;
+  /**
+  * @brief Game update method
+  */
+  void update();
+
+  /**
+  * @brief Game draw method
+  */
+  void draw();
+
+private:
+  SDL_Window* m_window; 
+  SDL_Renderer* m_renderer;
 };

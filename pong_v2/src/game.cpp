@@ -1,3 +1,4 @@
+#include <SDL_render.h>
 #include <iostream>
 
 #include "game.hpp"
@@ -52,4 +53,19 @@ bool Game::init()
   }
 
   return true;
+}
+
+void Game::update()
+{
+  // TODO: implement this method
+}
+
+void Game::draw()
+{
+  SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+  SDL_RenderClear(m_renderer);
+
+  // Draw everything here
+  
+  SDL_RenderPresent(m_renderer);
 }
