@@ -55,6 +55,11 @@ bool Game::init()
   return true;
 }
 
+void Game::handle_input(SDL_Event& input)
+{
+  // TODO: implement this method
+}
+
 void Game::update()
 {
   // TODO: implement this method
