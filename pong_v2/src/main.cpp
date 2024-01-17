@@ -17,10 +17,10 @@ int main(int argc, char** argv)
     while (SDL_PollEvent(&event))
     {
       if (event.type == SDL_QUIT) running = false;
-      if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) game.handle_input(event);
+      else game.handle_input(event);
     }
 
-    game.update();
+    game.update(0); // TODO: implement delta_time
     game.draw();
   }
 }

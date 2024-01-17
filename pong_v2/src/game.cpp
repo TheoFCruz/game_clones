@@ -60,14 +60,14 @@ void Game::handle_input(SDL_Event& input)
   // TODO: implement this method
 }
 
-void Game::update()
+void Game::update(double delta_time)
 {
   // TODO: implement this method
 }
 
 void Game::draw()
 {
-  SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+  SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0x00, 0xFF);
   SDL_RenderClear(m_renderer);
 
   // Draw everything here

@@ -21,14 +21,14 @@ public:
   bool init();
 
   /**
-   * @brief Handle keyup and keydown events
+   * @brief Handle inputs in the form of events
    */
   void handle_input(SDL_Event& input);
   
   /**
   * @brief Game update method
   */
-  void update();
+  void update(double delta_time);
 
   /**
   * @brief Game draw method
