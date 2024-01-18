@@ -1,6 +1,7 @@
 #include <SDL_render.h>
 #include <iostream>
 
+#include "consts.hpp"
 #include "game.hpp"
 
 Game::Game():
