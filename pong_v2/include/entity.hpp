@@ -5,8 +5,8 @@
 class Entity
 {
 public:
-  Entity();
-  virtual ~Entity();
+  Entity(){}
+  virtual ~Entity(){}
 
   virtual void handle_input(SDL_Event& input) = 0;
   virtual void update(double delta_time) = 0;

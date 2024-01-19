@@ -63,7 +63,7 @@ void Game::handle_input(SDL_Event& input)
 
 void Game::update(double delta_time)
 {
-  // TODO: implement this method
+  m_ball.update(delta_time);
 }
 
 void Game::draw()
@@ -71,7 +71,8 @@ void Game::draw()
   SDL_SetRenderDrawColor(m_renderer, 0x00, 0x00, 0x00, 0xFF);
   SDL_RenderClear(m_renderer);
 
-  // Draw everything here
+  SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+  m_ball.draw(m_renderer);
   
   SDL_RenderPresent(m_renderer);
 }

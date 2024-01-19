@@ -34,6 +34,6 @@ public:
   void draw(SDL_Renderer* p_renderer) override;
 
 private:
-  SDL_Rect m_rect;
-  Vector2f velocity; 
+  SDL_FRect m_rect;
+  Vector2f m_velocity; 
 };

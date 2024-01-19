@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ball.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
@@ -35,4 +36,6 @@ public:
 private:
   SDL_Window* m_window; 
   SDL_Renderer* m_renderer;
+
+  Ball m_ball; 
 };
