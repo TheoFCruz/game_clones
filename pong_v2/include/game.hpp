@@ -1,8 +1,11 @@
 #pragma once
 
-#include "ball.hpp"
+#include <vector>
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+
+#include "entity.hpp"
 
 /**
  * @brief The classes that wraps the entire game
@@ -37,5 +40,5 @@ private:
   SDL_Window* m_window; 
   SDL_Renderer* m_renderer;
 
-  Ball m_ball; 
+  std::vector<Entity*> m_entities;
 };

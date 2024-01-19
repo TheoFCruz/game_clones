@@ -3,6 +3,7 @@
 
 #include "consts.hpp"
 #include "game.hpp"
+#include "ball.hpp"
 
 Game::Game():
   m_window(NULL),
@@ -11,6 +12,8 @@ Game::Game():
 
 Game::~Game()
 {
+  for (Entity* entity : m_entities) delete entity; 
+
   SDL_DestroyRenderer(m_renderer);
   SDL_DestroyWindow(m_window);
 
@@ -53,6 +56,9 @@ bool Game::init()
     return false;
   }
 
+  // Creates the game's entities
+  m_entities.push_back(new Ball());
+
   return true;
 }
 
@@ -63,7 +69,7 @@ void Game::handle_input(SDL_Event& input)
 
 void Game::update(double delta_time)
 {
-  m_ball.update(delta_time);
+  for (Entity* entity : m_entities) entity->update(delta_time);
 }
 
 void Game::draw()
@@ -72,7 +78,7 @@ void Game::draw()
   SDL_RenderClear(m_renderer);
 
   SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-  m_ball.draw(m_renderer);
+  for (Entity* entity : m_entities) entity->draw(m_renderer);
   
   SDL_RenderPresent(m_renderer);
 }
