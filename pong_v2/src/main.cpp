@@ -19,7 +19,7 @@ int main(int argc, char** argv)
     // Calculates delta_time in milliseconds
     last_counter = current_counter;
     current_counter = SDL_GetPerformanceCounter();
-      delta_time = ((double)(current_counter - last_counter))/((double)(SDL_GetPerformanceFrequency()));
+    delta_time = ((double)(current_counter - last_counter))/((double)(SDL_GetPerformanceFrequency()));
 
     // Event loop
     while (SDL_PollEvent(&event))

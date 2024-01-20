@@ -3,7 +3,6 @@
 #include <SDL2/SDL.h>
 
 #include "entity.hpp"
-#include "math_utils.hpp"
 
 class Paddle: public Entity
 {
@@ -12,11 +11,6 @@ public:
    * @brief Paddle constructor
    */
   Paddle();
-
-  /**
-   * @brief Paddle desctructor
-   */
-  ~Paddle();
 
   /**
    * @brief Handles input
@@ -35,5 +29,6 @@ public:
 
 private:
   SDL_FRect m_rect;
-  Vector2f velocity; 
+
+  float m_v_velocity;
 };

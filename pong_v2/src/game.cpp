@@ -4,6 +4,7 @@
 #include "consts.hpp"
 #include "game.hpp"
 #include "ball.hpp"
+#include "paddle.hpp"
 
 Game::Game():
   m_window(NULL),
@@ -36,7 +37,7 @@ bool Game::init()
     return false;
   }
 
-  //Creates the window and the renderer
+  //Creates the window
   m_window = SDL_CreateWindow("Pong",
                               SDL_WINDOWPOS_UNDEFINED,
                               SDL_WINDOWPOS_UNDEFINED,
@@ -49,6 +50,7 @@ bool Game::init()
     return false;
   }
 
+  // Creates the renderer
   m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
   if (m_renderer == NULL)
   {
@@ -56,15 +58,19 @@ bool Game::init()
     return false;
   }
 
+  // Makes renderer adapt to resizing
+  SDL_RenderSetLogicalSize(m_renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
   // Creates the game's entities
   m_entities.push_back(new Ball());
+  m_entities.push_back(new Paddle());
 
   return true;
 }
 
 void Game::handle_input(SDL_Event& input)
 {
-  // TODO: implement this method
+  for (Entity* entity : m_entities) entity->handle_input(input);
 }
 
 void Game::update(double delta_time)

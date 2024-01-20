@@ -11,11 +11,6 @@ Ball::Ball()
   m_velocity = Vector2f(-1, 0);
 }
 
-Ball::~Ball()
-{
-  
-}
-
 void Ball::update(double delta_time)
 {
   m_rect.x += BALL_SPEED * m_velocity.x * delta_time;

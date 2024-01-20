@@ -14,11 +14,6 @@ public:
   Ball();
 
   /**
-   * @brief Ball desctructor
-   */
-  ~Ball();
-
-  /**
    * @brief Ball's empty handle_input for polymorphism purposes
    */
   void handle_input(SDL_Event& event) override {}
