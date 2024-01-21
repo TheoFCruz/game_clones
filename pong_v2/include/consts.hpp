@@ -6,4 +6,4 @@ const int BALL_SIDE = 10;
 
 const int PADDLE_SPEED = 800;
 const int PADDLE_WIDTH = 10;
-const int PADDLE_HEIGHT = 50;
+const int PADDLE_HEIGHT = 60;

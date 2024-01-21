@@ -90,3 +90,8 @@ void Game::draw()
   
   SDL_RenderPresent(m_renderer);
 }
+
+void Game::check_collisions()
+{
+  // TODO: implement this method 
+}

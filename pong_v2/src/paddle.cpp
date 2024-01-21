@@ -44,6 +44,9 @@ void Paddle::handle_input(SDL_Event& input)
 void Paddle::update(double delta_time)
 {
   m_rect.y += m_speed * delta_time;
+
+  if (m_rect.y < 0) m_rect.y = 0;
+  else if(m_rect.y > SCREEN_HEIGHT - PADDLE_HEIGHT) m_rect.y = SCREEN_HEIGHT - PADDLE_HEIGHT;
 }
 
 void Paddle::draw(SDL_Renderer* p_renderer)
