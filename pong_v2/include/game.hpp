@@ -18,8 +18,8 @@ public:
   ~Game();
 
   /**
-  * @brief Initializes SDL2 and SDL2_ttf and creates a window and a renderer
-  */
+   * @brief Initializes SDL2 and SDL2_ttf and creates a window and a renderer
+   */
   bool init();
 
   /**
@@ -28,21 +28,24 @@ public:
   void handle_input(SDL_Event& input);
   
   /**
-  * @brief Game update method
-  */
+   * @brief Game update method
+   */
   void update(double delta_time);
 
   /**
-  * @brief Game draw method
-  */
+   * @brief Game draw method
+   */
   void draw();
 
-  /**
-  * @brief Checks all possible collisions for the ball, and triggers the right functions
-  */
-  void check_collisions();
 
 private:
+
+  /**
+   * @brief Checks all possible collisions for the ball, and triggers the right functions
+   */
+  void check_collisions();
+
+  // Members
   SDL_Window* m_window; 
   SDL_Renderer* m_renderer;
 

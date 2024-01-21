@@ -1,3 +1,4 @@
+#include <SDL_rect.h>
 #include <SDL_render.h>
 #include <iostream>
 
@@ -76,6 +77,8 @@ void Game::update(double delta_time)
   m_ball.update(delta_time);
   m_left_paddle.update(delta_time);
   // m_right_paddle.update(delta_time);
+  
+  check_collisions();
 }
 
 void Game::draw()
@@ -93,5 +96,16 @@ void Game::draw()
 
 void Game::check_collisions()
 {
-  // TODO: implement this method 
+  SDL_FRect& ball_rect = m_ball.get_rect();
+  SDL_FRect& l_paddle_rect = m_left_paddle.get_rect();
+  // SDL_FRect& r_paddle_rect = m_right_paddle.get_rect();
+
+  if (SDL_HasIntersectionF(&ball_rect, &l_paddle_rect)) 
+  {
+    m_ball.on_paddle_collision(m_right_paddle);
+  }
+  // else if (SDL_HasIntersectionF(&ball_rect, r_paddle_rect))
+  // {
+  //   m_ball.on_paddle_collision(m_right_paddle);
+  // }
 }

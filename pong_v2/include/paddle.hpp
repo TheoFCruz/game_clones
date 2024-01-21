@@ -26,6 +26,12 @@ public:
    */
   void draw(SDL_Renderer* p_renderer);
 
+  /**
+   * @brief Returns the paddles rect
+   * @return A reference to the paddles SDL_Frect
+   */
+  SDL_FRect& get_rect() {return m_rect;}
+
 private:
   SDL_FRect m_rect;
   float m_speed;

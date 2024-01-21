@@ -24,9 +24,15 @@ public:
   void draw(SDL_Renderer* p_renderer);
 
   /**
-  * @brief Triggered on paddle collision
-  */
-  void on_paddle_collision(const Paddle& paddle);
+   * @brief Triggered on paddle collision
+   */
+  void on_paddle_collision(Paddle& paddle);
+
+  /**
+   * @brief Returns the balls rect
+   * @return A reference to the balls SDL_Frect
+   */
+  SDL_FRect& get_rect() {return m_rect;}
 
 private:
   SDL_FRect m_rect;

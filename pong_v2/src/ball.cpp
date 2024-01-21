@@ -23,8 +23,10 @@ void Ball::draw(SDL_Renderer* p_renderer)
   SDL_RenderFillRectF(p_renderer, &m_rect);
 }
 
-void Ball::on_paddle_collision(const Paddle& paddle)
+void Ball::on_paddle_collision(Paddle& paddle)
 {
-  m_direction.x *= -1;
+  // TODO: implement direction change logic
+  m_rect.x = paddle.get_rect().x + PADDLE_WIDTH;
+  m_direction.x = - m_direction.x;
   m_direction.normalize();
 }
