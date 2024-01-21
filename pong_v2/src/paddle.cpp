@@ -8,7 +8,7 @@ Paddle::Paddle()
   m_rect.x = 30;
   m_rect.y = ((float)(SCREEN_HEIGHT - PADDLE_HEIGHT))/2;
 
-  m_v_velocity = 0; 
+  m_speed = 0; 
 }
 
 void Paddle::handle_input(SDL_Event& input)
@@ -18,11 +18,11 @@ void Paddle::handle_input(SDL_Event& input)
     switch (input.key.keysym.sym)
     {
       case SDLK_w:
-        m_v_velocity -= PADDLE_SPEED; 
+        m_speed -= PADDLE_SPEED; 
       break;
 
       case SDLK_s:
-        m_v_velocity += PADDLE_SPEED; 
+        m_speed += PADDLE_SPEED; 
       break;
     }
   }
@@ -31,11 +31,11 @@ void Paddle::handle_input(SDL_Event& input)
     switch (input.key.keysym.sym)
     {
       case SDLK_w:
-        m_v_velocity += PADDLE_SPEED; 
+        m_speed += PADDLE_SPEED; 
       break;
 
       case SDLK_s:
-        m_v_velocity -= PADDLE_SPEED; 
+        m_speed -= PADDLE_SPEED; 
       break;
     }
   }
@@ -43,7 +43,7 @@ void Paddle::handle_input(SDL_Event& input)
 
 void Paddle::update(double delta_time)
 {
-  m_rect.y += m_v_velocity * delta_time;
+  m_rect.y += m_speed * delta_time;
 }
 
 void Paddle::draw(SDL_Renderer* p_renderer)

@@ -2,10 +2,10 @@
 
 #include <SDL2/SDL.h>
 
-#include "entity.hpp"
 #include "math_utils.hpp"
+#include "paddle.hpp"
 
-class Ball: public Entity
+class Ball
 {
 public:
   /**
@@ -14,21 +14,21 @@ public:
   Ball();
 
   /**
-   * @brief Ball's empty handle_input for polymorphism purposes
-   */
-  void handle_input(SDL_Event& event) override {}
-
-  /**
    * @brief Update method for the game ball
    */
-  void update(double delta_time) override;
+  void update(double delta_time);
 
   /**
    * @brief Draw method for the game ball
    */
-  void draw(SDL_Renderer* p_renderer) override;
+  void draw(SDL_Renderer* p_renderer);
+
+  /**
+  * @brief Triggered on paddle collision
+  */
+  void on_paddle_collision(const Paddle& paddle);
 
 private:
   SDL_FRect m_rect;
-  Vector2f m_velocity; 
+  Vector2f m_direction; 
 };

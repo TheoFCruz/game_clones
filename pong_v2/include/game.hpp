@@ -1,11 +1,12 @@
 #pragma once
 
-#include <vector>
+#include <memory>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "entity.hpp"
+#include "ball.hpp"
+#include "paddle.hpp"
 
 /**
  * @brief The classes that wraps the entire game
@@ -36,9 +37,16 @@ public:
   */
   void draw();
 
+  /**
+  * @brief Checks all possible collisions for the ball, and triggers the right functions
+  */
+  void check_collisions();
+
 private:
   SDL_Window* m_window; 
   SDL_Renderer* m_renderer;
 
-  std::vector<Entity*> m_entities;
+  Ball m_ball;
+  Paddle m_right_paddle;
+  Paddle m_left_paddle;
 };

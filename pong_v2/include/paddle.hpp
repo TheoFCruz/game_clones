@@ -2,9 +2,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "entity.hpp"
-
-class Paddle: public Entity
+// TODO: Implement second player logic
+class Paddle
 {
 public:
   /**
@@ -15,20 +14,19 @@ public:
   /**
    * @brief Handles input
    */
-  void handle_input(SDL_Event& input) override;
+  void handle_input(SDL_Event& input);
 
   /**
    * @brief Update method for the game paddle
    */
-  void update(double delta_time) override;
+  void update(double delta_time);
 
   /**
    * @brief Draw method for the game paddle
    */
-  void draw(SDL_Renderer* p_renderer) override;
+  void draw(SDL_Renderer* p_renderer);
 
 private:
   SDL_FRect m_rect;
-
-  float m_v_velocity;
+  float m_speed;
 };

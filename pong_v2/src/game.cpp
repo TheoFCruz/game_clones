@@ -8,13 +8,14 @@
 
 Game::Game():
   m_window(NULL),
-  m_renderer(NULL)
+  m_renderer(NULL),
+  m_ball(),
+  m_left_paddle(),
+  m_right_paddle()
 {}
 
 Game::~Game()
 {
-  for (Entity* entity : m_entities) delete entity; 
-
   SDL_DestroyRenderer(m_renderer);
   SDL_DestroyWindow(m_window);
 
@@ -61,21 +62,20 @@ bool Game::init()
   // Makes renderer adapt to resizing
   SDL_RenderSetLogicalSize(m_renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-  // Creates the game's entities
-  m_entities.push_back(new Ball());
-  m_entities.push_back(new Paddle());
-
   return true;
 }
 
 void Game::handle_input(SDL_Event& input)
 {
-  for (Entity* entity : m_entities) entity->handle_input(input);
+  m_left_paddle.handle_input(input);
+  // m_right_paddle.handle_input(input);
 }
 
 void Game::update(double delta_time)
 {
-  for (Entity* entity : m_entities) entity->update(delta_time);
+  m_ball.update(delta_time);
+  m_left_paddle.update(delta_time);
+  // m_right_paddle.update(delta_time);
 }
 
 void Game::draw()
@@ -84,7 +84,9 @@ void Game::draw()
   SDL_RenderClear(m_renderer);
 
   SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-  for (Entity* entity : m_entities) entity->draw(m_renderer);
+  m_ball.draw(m_renderer);
+  m_left_paddle.draw(m_renderer);
+  // m_right_paddle.draw(m_renderer);
   
   SDL_RenderPresent(m_renderer);
 }
