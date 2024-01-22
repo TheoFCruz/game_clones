@@ -8,7 +8,7 @@ Ball::Ball()
   m_rect.x = ((float)(SCREEN_WIDTH - BALL_SIDE))/2;   
   m_rect.y = ((float)(SCREEN_HEIGHT - BALL_SIDE))/2;   
   
-  m_direction = Vector2f(-1, 0);
+  m_direction = Vector2f(-1 , 1);
   m_direction.normalize();
 }
 
@@ -42,4 +42,18 @@ void Ball::on_paddle_collision(Paddle& paddle)
   // TODO: implement direction change logic
   m_direction.x = - m_direction.x;
   m_direction.normalize();
+}
+
+void Ball::vertical_bounce(Wall_Type wall)
+{
+  switch (wall)
+  {
+    case Wall_Type::TOP:
+      m_rect.y = 0;
+      break;
+    case Wall_Type::BOTTOM:
+      m_rect.y = SCREEN_HEIGHT - BALL_SIDE;
+      break;
+  }
+   m_direction.y = -m_direction.y;
 }

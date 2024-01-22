@@ -100,6 +100,7 @@ void Game::check_collisions()
   SDL_FRect& l_paddle_rect = m_left_paddle.get_rect();
   SDL_FRect& r_paddle_rect = m_right_paddle.get_rect();
 
+  // Ball paddle collision
   if (SDL_HasIntersectionF(&ball_rect, &l_paddle_rect)) 
   {
     m_ball.on_paddle_collision(m_left_paddle);
@@ -108,4 +109,10 @@ void Game::check_collisions()
   {
     m_ball.on_paddle_collision(m_right_paddle);
   }
+
+  // Ball wall collision
+  if (ball_rect.y < 0) m_ball.vertical_bounce(Wall_Type::TOP);
+  else if (ball_rect.y > SCREEN_HEIGHT - BALL_SIDE) m_ball.vertical_bounce(Wall_Type::BOTTOM);
+  // else if (ball_rect.x < 0) score_left();
+  // else if (ball_rect.x > SCREEN_WIDTH - BALL_SIDE) score_right();
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <memory>
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
@@ -44,7 +42,7 @@ private:
    * @brief Checks all possible collisions for the ball, and triggers the right functions
    */
   void check_collisions();
-
+  
   // Members
   SDL_Window* m_window; 
   SDL_Renderer* m_renderer;

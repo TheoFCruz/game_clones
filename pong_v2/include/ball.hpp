@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 
 #include "math_utils.hpp"
+#include "consts.hpp"
 #include "paddle.hpp"
 
 class Ball
@@ -33,6 +34,11 @@ public:
    * @return A reference to the balls SDL_Frect
    */
   SDL_FRect& get_rect() {return m_rect;}
+
+  /**
+  * @brief Inverts y in m_dire
+  */
+  void vertical_bounce(Wall_Type wall);
 
 private:
   SDL_FRect m_rect;
