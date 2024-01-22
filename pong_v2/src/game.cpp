@@ -11,8 +11,8 @@ Game::Game():
   m_window(NULL),
   m_renderer(NULL),
   m_ball(),
-  m_left_paddle(),
-  m_right_paddle()
+  m_left_paddle(Paddle_Type::PLAYER_LEFT),
+  m_right_paddle(Paddle_Type::PLAYER_RIGHT)
 {}
 
 Game::~Game()
@@ -69,14 +69,14 @@ bool Game::init()
 void Game::handle_input(SDL_Event& input)
 {
   m_left_paddle.handle_input(input);
-  // m_right_paddle.handle_input(input);
+  m_right_paddle.handle_input(input);
 }
 
 void Game::update(double delta_time)
 {
   m_ball.update(delta_time);
   m_left_paddle.update(delta_time);
-  // m_right_paddle.update(delta_time);
+  m_right_paddle.update(delta_time);
   
   check_collisions();
 }
@@ -89,7 +89,7 @@ void Game::draw()
   SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
   m_ball.draw(m_renderer);
   m_left_paddle.draw(m_renderer);
-  // m_right_paddle.draw(m_renderer);
+  m_right_paddle.draw(m_renderer);
   
   SDL_RenderPresent(m_renderer);
 }
@@ -98,14 +98,14 @@ void Game::check_collisions()
 {
   SDL_FRect& ball_rect = m_ball.get_rect();
   SDL_FRect& l_paddle_rect = m_left_paddle.get_rect();
-  // SDL_FRect& r_paddle_rect = m_right_paddle.get_rect();
+  SDL_FRect& r_paddle_rect = m_right_paddle.get_rect();
 
   if (SDL_HasIntersectionF(&ball_rect, &l_paddle_rect)) 
   {
+    m_ball.on_paddle_collision(m_left_paddle);
+  }
+  else if (SDL_HasIntersectionF(&ball_rect, &r_paddle_rect))
+  {
     m_ball.on_paddle_collision(m_right_paddle);
   }
-  // else if (SDL_HasIntersectionF(&ball_rect, r_paddle_rect))
-  // {
-  //   m_ball.on_paddle_collision(m_right_paddle);
-  // }
 }

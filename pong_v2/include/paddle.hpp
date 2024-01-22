@@ -3,13 +3,21 @@
 #include <SDL2/SDL.h>
 
 // TODO: Implement second player logic
+
+enum class Paddle_Type
+{
+  PLAYER_LEFT,
+  PLAYER_RIGHT,
+  AI
+};
+
 class Paddle
 {
 public:
   /**
    * @brief Paddle constructor
    */
-  Paddle();
+  Paddle(Paddle_Type type);
 
   /**
    * @brief Handles input
@@ -25,14 +33,18 @@ public:
    * @brief Draw method for the game paddle
    */
   void draw(SDL_Renderer* p_renderer);
-
+  
   /**
-   * @brief Returns the paddles rect
-   * @return A reference to the paddles SDL_Frect
+   * @brief Gets a reference to the ball and handles the ai logic
    */
+  void handle_ai();
+
+  // Getters and Setters
   SDL_FRect& get_rect() {return m_rect;}
+  Paddle_Type get_type() {return m_type;}
 
 private:
   SDL_FRect m_rect;
   float m_speed;
+  Paddle_Type m_type; 
 };
