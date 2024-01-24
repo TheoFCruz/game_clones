@@ -113,6 +113,17 @@ void Game::check_collisions()
   // Ball wall collision
   if (ball_rect.y < 0) m_ball.vertical_bounce(Wall_Type::TOP);
   else if (ball_rect.y > SCREEN_HEIGHT - BALL_SIDE) m_ball.vertical_bounce(Wall_Type::BOTTOM);
-  // else if (ball_rect.x < 0) score_left();
-  // else if (ball_rect.x > SCREEN_WIDTH - BALL_SIDE) score_right();
+  else if (ball_rect.x < 0) score_left();
+  else if (ball_rect.x > SCREEN_WIDTH - BALL_SIDE) score_right();
+}
+
+// TODO: implement text and scores
+void Game::score_left()
+{
+  m_ball.reset();
+}
+
+void Game::score_right()
+{
+  m_ball.reset();
 }

@@ -40,6 +40,11 @@ public:
   */
   void vertical_bounce(Wall_Type wall);
 
+  /**
+  * @brief Resets ball position
+  */
+  void reset();
+
 private:
   SDL_FRect m_rect;
   Vector2f m_direction; 

@@ -42,6 +42,16 @@ private:
    * @brief Checks all possible collisions for the ball, and triggers the right functions
    */
   void check_collisions();
+
+  /**
+  * @brief Triggered when left player scores
+  */
+  void score_left(); 
+
+  /**
+  * @brief Triggered when left player scores
+  */
+  void score_right(); 
   
   // Members
   SDL_Window* m_window; 

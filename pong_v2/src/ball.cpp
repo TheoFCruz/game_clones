@@ -57,3 +57,12 @@ void Ball::vertical_bounce(Wall_Type wall)
   }
    m_direction.y = -m_direction.y;
 }
+
+void Ball::reset()
+{
+  m_rect.x = ((float)(SCREEN_WIDTH - BALL_SIDE))/2;   
+  m_rect.y = ((float)(SCREEN_HEIGHT - BALL_SIDE))/2;   
+  
+  m_direction = Vector2f(-1 , 1);
+  m_direction.normalize();
+}
