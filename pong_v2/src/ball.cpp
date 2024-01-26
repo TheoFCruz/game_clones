@@ -25,7 +25,7 @@ void Ball::draw(SDL_Renderer* p_renderer)
 
 void Ball::on_paddle_collision(Paddle& paddle)
 {
-  // TODO: there must be a better way to do this
+  // There must be a better way to do this
   switch (paddle.get_type())
   {
     case Paddle_Type::PLAYER_LEFT:
@@ -39,8 +39,9 @@ void Ball::on_paddle_collision(Paddle& paddle)
       break;
   }
 
-  // TODO: implement direction change logic
+  // TODO: change this to add to y instead of set
   m_direction.x = - m_direction.x;
+  m_direction.y = -1 + 2*(m_rect.y - paddle.get_rect().y)/PADDLE_HEIGHT;
   m_direction.normalize();
 }
 
