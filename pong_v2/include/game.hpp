@@ -5,6 +5,7 @@
 
 #include "ball.hpp"
 #include "paddle.hpp"
+#include "scores.hpp"
 
 /**
  * @brief The classes that wraps the entire game
@@ -35,6 +36,15 @@ public:
    */
   void draw();
 
+  /**
+   * @brief Triggered when left player scores
+   */
+  void left_score();
+
+  /**
+   * @brief Triggered when right player scores
+   */
+  void right_score();
 
 private:
 
@@ -43,16 +53,6 @@ private:
    */
   void check_collisions();
 
-  /**
-  * @brief Triggered when left player scores
-  */
-  void score_left(); 
-
-  /**
-  * @brief Triggered when left player scores
-  */
-  void score_right(); 
-  
   // Members
   SDL_Window* m_window; 
   SDL_Renderer* m_renderer;
@@ -61,6 +61,5 @@ private:
   Paddle m_right_paddle;
   Paddle m_left_paddle;
 
-  unsigned int m_left_score;
-  unsigned int m_right_score;
+  Scores m_scores;
 };

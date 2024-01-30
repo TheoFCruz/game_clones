@@ -67,10 +67,10 @@ void Ball::reset(Paddle_Type type)
   
   switch (type)  
   {
-    case Paddle_Type::LEFT:
+    case Paddle_Type::RIGHT:
       m_direction = Vector2f(-1,0);
       break;
-    case Paddle_Type::RIGHT:
+    case Paddle_Type::LEFT:
       m_direction = Vector2f(1,0);
       break;
   }

@@ -1,18 +1,14 @@
-#include <SDL_rect.h>
-#include <SDL_render.h>
 #include <iostream>
 
-#include "consts.hpp"
 #include "game.hpp"
-#include "ball.hpp"
-#include "paddle.hpp"
 
 Game::Game():
   m_window(NULL),
   m_renderer(NULL),
   m_ball(),
   m_left_paddle(Paddle_Type::LEFT),
-  m_right_paddle(Paddle_Type::RIGHT)
+  m_right_paddle(Paddle_Type::RIGHT),
+  m_scores("")
 {}
 
 Game::~Game()
@@ -113,19 +109,18 @@ void Game::check_collisions()
   // Ball wall collision
   if (ball_rect.y < 0) m_ball.vertical_bounce(Wall_Type::TOP);
   else if (ball_rect.y > SCREEN_HEIGHT - BALL_SIDE) m_ball.vertical_bounce(Wall_Type::BOTTOM);
-  else if (ball_rect.x < 0) score_left();
-  else if (ball_rect.x > SCREEN_WIDTH - BALL_SIDE) score_right();
+  else if (ball_rect.x < 0) right_score();
+  else if (ball_rect.x > SCREEN_WIDTH - BALL_SIDE) left_score();
 }
 
-// TODO: implement text and scores
-void Game::score_left()
+void Game::left_score()
 {
   m_ball.reset(Paddle_Type::LEFT);
-  m_right_score++;
+  m_scores.score_left();
 }
 
-void Game::score_right()
+void Game::right_score()
 {
   m_ball.reset(Paddle_Type::RIGHT);
-  m_left_score++;
+  m_scores.score_right();
 }
