@@ -8,13 +8,10 @@ Paddle::Paddle(Paddle_Type type):
   m_rect.h = PADDLE_HEIGHT;
   switch(m_type)
   {
-    case Paddle_Type::PLAYER_LEFT:
+    case Paddle_Type::LEFT:
       m_rect.x = 30;
       break;
-    case Paddle_Type::PLAYER_RIGHT:
-      m_rect.x = SCREEN_WIDTH - (PADDLE_WIDTH + 30);
-      break;
-    case Paddle_Type::AI:
+    case Paddle_Type::RIGHT:
       m_rect.x = SCREEN_WIDTH - (PADDLE_WIDTH + 30);
       break;
   }
@@ -30,18 +27,18 @@ void Paddle::handle_input(SDL_Event& input)
 
   switch (m_type)
   {
-    case Paddle_Type::PLAYER_LEFT:
+    case Paddle_Type::LEFT:
       up_key = SDLK_w;
       down_key = SDLK_s;
       break;
-    case Paddle_Type::PLAYER_RIGHT:
+    case Paddle_Type::RIGHT:
       up_key = SDLK_UP;
       down_key = SDLK_DOWN;
       break;
-    case Paddle_Type::AI:
-      // handle_ai();
-      return;
-      break;
+    // case Paddle_Type::AI:
+    //   handle_ai();
+    //   return;
+    //   break;
   }
 
   if (input.type == SDL_KEYDOWN && !input.key.repeat)

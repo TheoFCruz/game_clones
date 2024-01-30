@@ -11,8 +11,8 @@ Game::Game():
   m_window(NULL),
   m_renderer(NULL),
   m_ball(),
-  m_left_paddle(Paddle_Type::PLAYER_LEFT),
-  m_right_paddle(Paddle_Type::PLAYER_RIGHT)
+  m_left_paddle(Paddle_Type::LEFT),
+  m_right_paddle(Paddle_Type::RIGHT)
 {}
 
 Game::~Game()
@@ -120,10 +120,12 @@ void Game::check_collisions()
 // TODO: implement text and scores
 void Game::score_left()
 {
-  m_ball.reset();
+  m_ball.reset(Paddle_Type::LEFT);
+  m_right_score++;
 }
 
 void Game::score_right()
 {
-  m_ball.reset();
+  m_ball.reset(Paddle_Type::RIGHT);
+  m_left_score++;
 }

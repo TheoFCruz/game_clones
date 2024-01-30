@@ -6,9 +6,8 @@
 
 enum class Paddle_Type
 {
-  PLAYER_LEFT,
-  PLAYER_RIGHT,
-  AI
+  LEFT,
+  RIGHT,
 };
 
 class Paddle

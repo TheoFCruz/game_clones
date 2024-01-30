@@ -60,4 +60,7 @@ private:
   Ball m_ball;
   Paddle m_right_paddle;
   Paddle m_left_paddle;
+
+  unsigned int m_left_score;
+  unsigned int m_right_score;
 };

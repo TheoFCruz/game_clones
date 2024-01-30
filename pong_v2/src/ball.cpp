@@ -8,14 +8,15 @@ Ball::Ball()
   m_rect.x = ((float)(SCREEN_WIDTH - BALL_SIDE))/2;   
   m_rect.y = ((float)(SCREEN_HEIGHT - BALL_SIDE))/2;   
   
-  m_direction = Vector2f(-1 , 1);
-  m_direction.normalize();
+  m_direction = Vector2f(-1 , 0);
+
+  m_current_speed = SERVE_SPEED;
 }
 
 void Ball::update(double delta_time)
 {
-  m_rect.x += BALL_SPEED * m_direction.x * delta_time;
-  m_rect.y += BALL_SPEED * m_direction.y * delta_time;
+  m_rect.x += m_current_speed * m_direction.x * delta_time;
+  m_rect.y += m_current_speed * m_direction.y * delta_time;
 }
 
 void Ball::draw(SDL_Renderer* p_renderer)
@@ -25,16 +26,16 @@ void Ball::draw(SDL_Renderer* p_renderer)
 
 void Ball::on_paddle_collision(Paddle& paddle)
 {
+  // Doing this every collision cause I couldn't find a better way
+  m_current_speed = BALL_SPEED;
+
   // There must be a better way to do this
   switch (paddle.get_type())
   {
-    case Paddle_Type::PLAYER_LEFT:
+    case Paddle_Type::LEFT:
       m_rect.x = paddle.get_rect().x + PADDLE_WIDTH;
       break;
-    case Paddle_Type::PLAYER_RIGHT:
-      m_rect.x = paddle.get_rect().x - BALL_SIDE;
-      break;
-    case Paddle_Type::AI:
+    case Paddle_Type::RIGHT:
       m_rect.x = paddle.get_rect().x - BALL_SIDE;
       break;
   }
@@ -59,11 +60,20 @@ void Ball::vertical_bounce(Wall_Type wall)
    m_direction.y = -m_direction.y;
 }
 
-void Ball::reset()
+void Ball::reset(Paddle_Type type)
 {
   m_rect.x = ((float)(SCREEN_WIDTH - BALL_SIDE))/2;   
   m_rect.y = ((float)(SCREEN_HEIGHT - BALL_SIDE))/2;   
   
-  m_direction = Vector2f(-1 , 1);
-  m_direction.normalize();
+  switch (type)  
+  {
+    case Paddle_Type::LEFT:
+      m_direction = Vector2f(-1,0);
+      break;
+    case Paddle_Type::RIGHT:
+      m_direction = Vector2f(1,0);
+      break;
+  }
+
+  m_current_speed = SERVE_SPEED;
 }

@@ -41,11 +41,14 @@ public:
   void vertical_bounce(Wall_Type wall);
 
   /**
-  * @brief Resets ball position
+  * @brief Resets ball position and sends to the player who was scored on
+  * @param type The side of the player who was scored on
   */
-  void reset();
+  void reset(Paddle_Type type);
 
 private:
   SDL_FRect m_rect;
+  
   Vector2f m_direction; 
+  float m_current_speed;
 };
