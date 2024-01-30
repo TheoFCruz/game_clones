@@ -39,9 +39,9 @@ void Ball::on_paddle_collision(Paddle& paddle)
       break;
   }
 
-  // TODO: change this to add to y instead of set
   m_direction.x = - m_direction.x;
-  m_direction.y = -1 + 2*(m_rect.y - paddle.get_rect().y)/PADDLE_HEIGHT;
+  // Linear regression to alter a little the ball's direction
+  m_direction.y += -0.5 + (m_rect.y - paddle.get_rect().y)/PADDLE_HEIGHT;
   m_direction.normalize();
 }
 
