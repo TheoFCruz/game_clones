@@ -60,7 +60,7 @@ bool Game::init()
   SDL_RenderSetLogicalSize(m_renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
   // Inits scores
-  m_scores.init("res/RobotoMono-Regular.ttf");
+  m_scores.init("res/8-BIT WONDER.ttf");
 
   return true;
 }
