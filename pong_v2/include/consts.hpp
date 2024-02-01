@@ -16,3 +16,5 @@ enum class Wall_Type
   TOP,
   BOTTOM
 };
+
+const int FONT_SIZE = 25;

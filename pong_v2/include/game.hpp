@@ -46,6 +46,9 @@ public:
    */
   void right_score();
 
+  // Returns the renderer
+  SDL_Renderer* get_renderer() { return m_renderer; }
+
 private:
 
   /**

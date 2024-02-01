@@ -8,7 +8,7 @@ Game::Game():
   m_ball(),
   m_left_paddle(Paddle_Type::LEFT),
   m_right_paddle(Paddle_Type::RIGHT),
-  m_scores("")
+  m_scores(*this)
 {}
 
 Game::~Game()
@@ -59,6 +59,9 @@ bool Game::init()
   // Makes renderer adapt to resizing
   SDL_RenderSetLogicalSize(m_renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+  // Inits scores
+  m_scores.init("res/RobotoMono-Regular.ttf");
+
   return true;
 }
 
@@ -86,6 +89,7 @@ void Game::draw()
   m_ball.draw(m_renderer);
   m_left_paddle.draw(m_renderer);
   m_right_paddle.draw(m_renderer);
+  m_scores.draw(m_renderer);
   
   SDL_RenderPresent(m_renderer);
 }
