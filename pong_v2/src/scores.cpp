@@ -48,6 +48,7 @@ void Scores::score_left()
 
   std::string score_str = std::to_string(m_left_score);
 
+  SDL_DestroyTexture(m_left_text);
   SDL_Surface* temp_surface = TTF_RenderText_Solid(m_font, score_str.c_str(), white);
   m_left_text = SDL_CreateTextureFromSurface(m_game.get_renderer(), temp_surface);
   SDL_FreeSurface(temp_surface);
@@ -59,6 +60,7 @@ void Scores::score_right()
 
   std::string score_str = std::to_string(m_right_score);
 
+  SDL_DestroyTexture(m_right_text);
   SDL_Surface* temp_surface = TTF_RenderText_Solid(m_font, score_str.c_str(), white);
   m_right_text = SDL_CreateTextureFromSurface(m_game.get_renderer(), temp_surface);
   SDL_FreeSurface(temp_surface);
