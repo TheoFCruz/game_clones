@@ -14,7 +14,6 @@ class Game
 {
 public:
   Game();
-  ~Game();
 
   /**
    * @brief Initializes SDL2 and SDL2_ttf and creates a window and a renderer
@@ -35,6 +34,11 @@ public:
    * @brief Game draw method
    */
   void draw();
+
+  /**
+   * @brief Closes the libraries and frees renderer and window memory
+   */
+  void close();
 
   /**
    * @brief Triggered when left player scores

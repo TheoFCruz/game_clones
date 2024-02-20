@@ -11,15 +11,6 @@ Game::Game():
   m_scores(*this)
 {}
 
-Game::~Game()
-{
-  SDL_DestroyRenderer(m_renderer);
-  SDL_DestroyWindow(m_window);
-
-  TTF_Quit();
-  SDL_Quit();
-}
-
 bool Game::init()
 {
   // Initializes SDL and SDL_ttf
@@ -92,6 +83,15 @@ void Game::draw()
   m_scores.draw(m_renderer);
   
   SDL_RenderPresent(m_renderer);
+}
+
+void Game::close()
+{
+  SDL_DestroyRenderer(m_renderer);
+  SDL_DestroyWindow(m_window);
+
+  TTF_Quit();
+  SDL_Quit();
 }
 
 void Game::check_collisions()
